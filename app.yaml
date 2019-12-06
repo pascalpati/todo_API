@@ -1,0 +1,32 @@
+runtime: python37
+#api_version: 1
+#threadsafe: true
+
+vpc_access_connector:
+  name: "projects/utv-adload/locations/us-central1/connectors/utvadload-serverless-vpc"
+
+handlers:
+- url: /.*
+  script: auto
+  #script: main.app
+
+env_variables:
+  #update with redis instance ip and port
+  REDISHOST: 10.0.0.3
+  REDISPORT: 6379
+
+  PUBSUB_TOPIC: 'pyTest_topic1'
+  # token to verify that the request originated from expected source
+  # it can be any sufficiently random string
+  PUBSUB_VERIFICATION_TOKEN: 'udemiR001'
+
+#update with redis instance ip and port
+network:
+  name: default
+
+  #libraries:
+  #- name: flask
+  #version: 0.12
+
+
+
